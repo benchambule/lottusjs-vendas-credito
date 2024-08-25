@@ -1,22 +1,15 @@
-import {create_vendas_bot} from "../bot.js";
+import { create_bot } from "../bot.js";
 import { format_message } from "lottus.js";
 
-const bot = create_vendas_bot();
+const bot = create_bot();
 
-let message = await bot.process({}, null);
-console.log(message);
+const input = ["", "3", "2", "3", "59", "98", "1", "00"];
 
-message = await bot.process({prompt: 3}, message);
-console.log(message);
+let message;
+let params;
 
-message = await bot.process({prompt: "2"}, message);
-console.log(message);
-
-message = await bot.process({prompt: "1"}, message);
-console.log(message);
-
-message = await bot.process({prompt: "19"}, message);
-console.log(message);
-
-message = await bot.process({prompt: "10"}, message);
-console.log(message);
+for(const i of input){
+    message = await bot.process({prompt: i, parameters: params}, message);
+    params = {...params, ...message.parameters};
+    console.log(format_message(message, params));
+}

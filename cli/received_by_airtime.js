@@ -3,7 +3,7 @@ import { format_message } from "lottus.js";
 
 const bot = create_bot();
 
-const input = ["", "1", "0", "00"];
+const input = ["hello", "3", "1", "2", "2", "465", "1"];
 
 let message;
 let params;
